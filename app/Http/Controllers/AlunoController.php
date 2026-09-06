@@ -24,11 +24,11 @@ class AlunoController extends Controller
         return view('alunos.create');
     }
 
-    public function store(Request $request)
-    {
-        Aluno::create($request->all());
-        return redirect()->route('alunos.index');
-    }
+    public function store(AlunoRequest $request)
+{
+    Aluno::create($request->validated());
+    return redirect()->route('alunos.index');
+}
 
     public function edit($id)
     {
@@ -49,3 +49,4 @@ class AlunoController extends Controller
         return redirect()->route('alunos.index');
     }
 }
+
