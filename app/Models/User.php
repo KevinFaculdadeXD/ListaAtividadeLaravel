@@ -30,8 +30,8 @@ class User extends Authenticatable
         ];
     }
 
-public function aluno()
+public function user()
 {
-    return $this->hasOne(Aluno::class);
+    return $this->belongsTo(User::class);
 }
 }
