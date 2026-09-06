@@ -2,42 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
-        public function index()
+    public function index()
     {
-        return 'Lista de todos os alunos';
+        $alunos = Aluno::all();
+        return view('alunos.index', compact('alunos'));
     }
 
     public function show($id)
     {
-        return "Detalhes do aluno $id";
+        $aluno = Aluno::findOrFail($id);
+        return view('alunos.show', compact('aluno'));
     }
 
     public function create()
     {
-        return 'Formulário de criação de aluno';
+        return view('alunos.create');
     }
 
     public function store(Request $request)
     {
-        return 'Aluno salvo com sucesso';
+        Aluno::create($request->all());
+        return redirect()->route('alunos.index');
     }
 
     public function edit($id)
     {
-        return "Formulário de edição do aluno $id";
+        $aluno = Aluno::findOrFail($id);
+        return view('alunos.edit', compact('aluno'));
     }
 
     public function update(Request $request, $id)
     {
-        return "Aluno $id atualizado";
+        $aluno = Aluno::findOrFail($id);
+        $aluno->update($request->all());
+        return redirect()->route('alunos.show', $aluno->id);
     }
 
     public function destroy($id)
     {
-        return "Aluno $id excluído";
+        Aluno::destroy($id);
+        return redirect()->route('alunos.index');
     }
 }
