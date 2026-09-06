@@ -17,3 +17,15 @@ Route::get('/alunos', function () {
 Route::get('/contato', function () {
     return 'meu contato ai 42 6969-6767';
 });
+
+Route::get('/produto/{id}', function ($id) {
+    return "Produto daora número: $id";
+});
+
+Route::get('/categoria/{id}', function ($id) {
+    return "Categoria número: $id";
+});
+
+Route::get('/usuario/{id}', function ($id) {
+    return "Usuário foda número: $id";
+});
