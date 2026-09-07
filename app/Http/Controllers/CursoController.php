@@ -1,9 +1,10 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
-
+ 
+use App\Models\Curso;
 use Illuminate\Http\Request;
-
+ 
 class CursoController extends Controller
 {
     public function show($id)
@@ -12,3 +13,4 @@ class CursoController extends Controller
     return view('cursos.show', compact('curso'));
 }
 }
+ 
