@@ -1,20 +1,27 @@
-@extends('layouts.app')
-
-@section('title', 'Editar Aluno')
-
-@section('content')
-    <h1>Editar Aluno</h1>
-
-    <form method="POST" action="{{ route('alunos.update', $aluno->id) }}">
-        @csrf
-        @method('PUT')
-
-        <label>Nome:</label>
-        <input type="text" name="nome" value="{{ $aluno->nome }}">
-
-        <label>Curso:</label>
-        <input type="text" name="curso" value="{{ $aluno->curso }}">
-
-        <button type="submit">Atualizar</button>
-    </form>
-@endsection
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            Editar Aluno
+        </h2>
+    </x-slot>
+ 
+    <div class="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8 text-gray-800 dark:text-gray-200">
+        <form method="POST" action="{{ route('alunos.update', $aluno->id) }}" class="space-y-4">
+            @csrf
+            @method('PUT')
+ 
+            <div>
+                <label class="block mb-1">Nome:</label>
+                <input type="text" name="nome" value="{{ $aluno->nome }}" class="border rounded px-3 py-2 text-gray-900 w-full max-w-sm">
+            </div>
+ 
+            <div>
+                <label class="block mb-1">Curso:</label>
+                <input type="text" name="curso" value="{{ $aluno->curso }}" class="border rounded px-3 py-2 text-gray-900 w-full max-w-sm">
+            </div>
+ 
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Atualizar</button>
+        </form>
+    </div>
+</x-app-layout>
+ 
